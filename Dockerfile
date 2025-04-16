@@ -35,7 +35,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip \
     python3-venv \
     software-properties-common \
+    openssh-client \
+    netcat-openbsd \
     && rm -rf /var/lib/apt/lists/*
+
+# Install required Python packages for Ansible
+RUN pip3 install --no-cache-dir kubernetes openshift
 
 # Copy Python virtual environment from builder
 COPY --from=python-builder /opt/venv /opt/venv
