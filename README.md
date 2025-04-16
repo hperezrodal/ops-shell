@@ -93,6 +93,50 @@ Before using OPS-SHELL, ensure you have the following:
 
 ### Quick Start
 
+#### Using the ops-shell.sh Script
+
+The `ops-shell.sh` script provides a convenient way to run the container with different options:
+
+```bash
+# Just run the shell
+./ops-shell.sh
+
+# Run with --no-init flag
+./ops-shell.sh --no-init
+
+# Run with environment variables
+./ops-shell.sh ENVIRONMENT=uat
+
+# Run with --no-init and environment variables
+./ops-shell.sh --no-init ENVIRONMENT=uat
+```
+
+#### Creating a Bash Alias
+
+To make the ops-shell command easily accessible from your terminal, add the following alias to your `~/.bashrc` file:
+
+```bash
+# Add this line to your ~/.bashrc
+alias ops-shell='docker run --rm -it -v "$(pwd)":/workspace ops-shell'
+```
+
+After adding the alias, either:
+1. Restart your terminal, or
+2. Run `source ~/.bashrc` to reload your configuration
+
+Now you can use the `ops-shell` command directly from any directory:
+
+```bash
+# Run with default initialization
+ops-shell
+
+# Run without initialization
+ops-shell --no-init
+
+# Run with additional arguments
+ops-shell --no-init bash
+```
+
 #### Running with Default Initialization
 
 When you run OPS-SHELL without the `--no-init` flag, it will execute the initialization script (`init.sh`) if present in your workspace:
