@@ -21,16 +21,6 @@ ARG BUILD_DATETIME
 ENV BUILD_DATETIME=$BUILD_DATETIME
 LABEL org.opencontainers.image.created=$BUILD_DATETIME
 
-# Create non-root user
-RUN groupadd -r ops && useradd -r -g ops ops
-
-# Create and set permissions for ops user directories
-RUN mkdir -p /home/ops \
-    && mkdir -p /home/ops/.ansible \
-    && mkdir -p /home/ops/.azure \
-    && chown -R ops:ops /home/ops \
-    && chmod -R 755 /home/ops
-
 # Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
@@ -85,15 +75,12 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
     && ./aws/install \
     && rm -rf awscliv2.zip aws
 
-# Create workspace directory and set permissions
-RUN mkdir -p /workspace && chown -R ops:ops /workspace
+# Create workspace directory
+RUN mkdir -p /workspace
 
 # Copy and set up runtime initialization script
 COPY runtime-init.sh /runtime-init.sh
 RUN chmod +x /runtime-init.sh
-
-# Switch to non-root user
-USER ops
 
 # Define the working directory
 WORKDIR /workspace
