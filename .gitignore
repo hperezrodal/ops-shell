@@ -1,0 +1,28 @@
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Shell
+*.swp
+*.swo
+*~
+
+# IDE
+.idea/
+.vscode/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# Local development
+.env
+.env.local 
