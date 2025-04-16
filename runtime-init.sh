@@ -22,6 +22,14 @@ echo "- ansible: $(ansible --version | head -n 1)"
 echo "- azure: $(az version --output tsv)"
 echo "============================================="
 
+# If there are remaining arguments, they are treated as environment variables
+if [ $# -gt 0 ]; then
+    echo "Setting environment variables from arguments..."
+    for arg in "$@"; do
+        export "$arg"
+    done
+fi
+
 # Run initialization if --no-init is not set
 if [ "$NO_INIT" = false ] && [ -f "/workspace/init.sh" ]; then
     echo "Running initialization script..."
@@ -36,5 +44,5 @@ if [ "$NO_INIT" = false ] && [ -f "/workspace/init.sh" ]; then
     fi
 fi
 
-# Start bash with remaining arguments
-exec /bin/bash "$@" 
+# Start bash
+exec /bin/bash 

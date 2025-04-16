@@ -18,8 +18,10 @@ if ! docker image inspect ops-shell >/dev/null 2>&1; then
     fi
 fi
 
+# Run the container with the provided arguments
 docker run --rm -it \
-  -v "$(pwd)":/workspace \
-  ops-shell $NO_INIT "$@"
+    -v "$(pwd)":/workspace \
+    ops-shell:latest $NO_INIT "$@"
 
-##-v ./runtime-init.sh:/runtime-init.sh \
+##    -v ./runtime-init.sh:/runtime-init.sh \
+
