@@ -113,16 +113,26 @@ The `ops-shell.sh` script provides a convenient way to run the container with di
 
 #### Creating a Bash Alias
 
-To make the ops-shell command easily accessible from your terminal, add the following alias to your `~/.bashrc` file:
+To make the ops-shell command easily accessible from your terminal, add the following alias to your shell configuration file:
 
+For Linux (Bash):
 ```bash
 # Add this line to your ~/.bashrc
 alias ops-shell='docker run --rm -it -v "$(pwd)":/workspace ops-shell'
 ```
 
+For macOS:
+```bash
+# Add this line to your ~/.zshrc (if using zsh)
+alias ops-shell='docker run --rm -it -v "$(pwd)":/workspace ops-shell'
+
+# Or if using bash, add it to your ~/.bash_profile
+alias ops-shell='docker run --rm -it -v "$(pwd)":/workspace ops-shell'
+```
+
 After adding the alias, either:
 1. Restart your terminal, or
-2. Run `source ~/.bashrc` to reload your configuration
+2. Run `source ~/.bashrc` (Linux) or `source ~/.zshrc` (macOS zsh) or `source ~/.bash_profile` (macOS bash) to reload your configuration
 
 Now you can use the `ops-shell` command directly from any directory:
 
