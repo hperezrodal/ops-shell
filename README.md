@@ -4,9 +4,12 @@ A Docker-based operations shell container that provides a comprehensive set of D
 
 ## Labels
 
-[![License](https://img.shields.io/github/license/hperezrodal/ops-shell)](LICENSE)
+![GitHub Release](https://img.shields.io/github/v/release/ops-shell/bash-library?style=flat-square)
 [![GitHub Issues](https://img.shields.io/github/issues/hperezrodal/ops-shell)](https://github.com/hperezrodal/ops-shell/issues)
 [![GitHub Stars](https://img.shields.io/github/stars/hperezrodal/ops-shell)](https://github.com/hperezrodal/ops-shell/stargazers)
+![Platform](https://img.shields.io/badge/platform-linux%20%7C%20macos-lightgrey?style=flat-square)
+[![License](https://img.shields.io/github/license/hperezrodal/ops-shell)](LICENSE)
+[![Bash Library](https://img.shields.io/badge/bash--library-v1.0.0-blue)](https://github.com/hperezrodal/bash-library)
 
 ## Project Structure
 
@@ -88,6 +91,12 @@ Before using OPS-SHELL, ensure you have the following:
   - Python 3 with virtual environment
   - Common utilities (curl, jq, etc.)
   - Bash shell with customization support
+
+- **Bash Library**:
+  - Pre-installed bash library for common operations
+  - System-wide installation of bash utilities
+  - Includes Python packages for Kubernetes and AWS operations
+  - Source: [hperezrodal/bash-library](https://github.com/hperezrodal/bash-library)
 
 ## Usage
 
@@ -239,6 +248,14 @@ docker run --rm -it \
 2. Update initialization scripts in `runtime-init.sh`
 3. Rebuild the image using `build.sh`
 
+## Contributing
+
+Contributions are always welcome! Please read the [contribution guidelines](CONTRIBUTING.md) first.
+
 ## License
 
-MIT License - See LICENSE file for details
+MIT License - See [LICENSE](LICENSE) file for details
+
+---
+
+Made with ❤️ by [hperezrodal](https://github.com/hperezrodal) 

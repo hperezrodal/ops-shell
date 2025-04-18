@@ -37,6 +37,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     software-properties-common \
     openssh-client \
     netcat-openbsd \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
 # Install required Python packages for Ansible
@@ -45,6 +46,9 @@ RUN pip3 install --no-cache-dir kubernetes openshift
 # Copy Python virtual environment from builder
 COPY --from=python-builder /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
+
+# Install Bash Library system-wide
+RUN SYSTEM_INSTALL=true curl -sSL https://raw.githubusercontent.com/hperezrodal/bash-library/main/install-remote.sh | bash
 
 # Install Ansible
 RUN apt-add-repository --yes --update ppa:ansible/ansible \
