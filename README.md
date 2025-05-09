@@ -127,16 +127,26 @@ To make the ops-shell command easily accessible from your terminal, add the foll
 For Linux (Bash):
 ```bash
 # Add this line to your ~/.bashrc
-alias ops-shell='docker run --rm -it -v "$(pwd)":/workspace ops-shell'
+# source .ops-shell-alias
+alias ops-shell='docker run --rm -it \
+   -v "$(pwd)":/workspace \
+   -v /var/run/docker.sock:/var/run/docker.sock \
+   ops-shell'
 ```
 
 For macOS:
 ```bash
 # Add this line to your ~/.zshrc (if using zsh)
-alias ops-shell='docker run --rm -it -v "$(pwd)":/workspace ops-shell'
+alias ops-shell='docker run --rm -it \
+   -v "$(pwd)":/workspace \
+   -v /var/run/docker.sock:/var/run/docker.sock \
+   ops-shell'
 
 # Or if using bash, add it to your ~/.bash_profile
-alias ops-shell='docker run --rm -it -v "$(pwd)":/workspace ops-shell'
+alias ops-shell='docker run --rm -it \
+   -v "$(pwd)":/workspace \
+   -v /var/run/docker.sock:/var/run/docker.sock \
+   ops-shell'
 ```
 
 After adding the alias, either:
@@ -167,14 +177,16 @@ docker run --rm -it ops-shell
 # Example output:
 =============================================
 Welcome to Ops Shell Container
-Build datetime: 2025-04-16T13:30:16Z
+Build datetime: 2025-04-24T11:59:51Z
 =============================================
 Available tools:
 - kubectl: v1.32.3
 - helm: v3.17.3+ge4da497
-- aws: aws-cli/2.26.2
-- terraform: v1.11.4
-- ansible: ansible [core 2.18.4]
+- aws: aws-cli/2.27.0 Python/3.13.2 Linux/6.8.0-57-generic exe/x86_64.ubuntu.22
+- terraform: Terraform v1.11.4
+- ansible: ansible [core 2.17.11]
+- azure: 2.71.0 2.71.0  1.1.0
+- docker: Docker version 28.1.1, build 4eba377
 =============================================
 Running initialization script...
 root@container-id:/workspace#
