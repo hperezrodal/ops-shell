@@ -21,6 +21,7 @@ echo "- terraform: $(terraform version | head -n 1)"
 echo "- ansible: $(ansible --version | head -n 1)"
 echo "- azure: $(az version --output tsv)"
 echo "- docker: $(docker --version)"
+echo "- argocd: $(argocd version --short 2>/dev/null | head -n1 | cut -d' ' -f2)"
 echo "============================================="
 
 # If there are remaining arguments, they are treated as environment variables
